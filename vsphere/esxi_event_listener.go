@@ -62,31 +62,57 @@ func (e *ESXiEventListener) handleEvent(ref types.ManagedObjectReference, events
 	for _, event := range events {
 		switch event.(type) {
 		case *types.VmBeingCreatedEvent:
-			e.logger.Info("VM being created event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM being created event received")
 		case *types.VmCreatedEvent:
-			e.logger.Info("VM created event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM created event received")
 		case *types.VmRemovedEvent:
-			e.logger.Info("VM removed event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM removed event received")
 		case *types.VmStartingEvent:
-			e.logger.Info("VM starting event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM starting event received")
 		case *types.VmPoweredOnEvent:
-			e.logger.Info("VM powered on event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM powered on event received")
 		case *types.VmSuspendingEvent:
-			e.logger.Info("VM suspending event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM suspending event received")
 		case *types.VmSuspendedEvent:
-			e.logger.Info("VM suspended event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM suspended event received")
 		case *types.VmResumingEvent:
-			e.logger.Info("VM resuming event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM resuming event received")
 		case *types.VmStoppingEvent:
-			e.logger.Info("VM stopping event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM stopping event received")
 		case *types.VmPoweredOffEvent:
-			e.logger.Info("VM powered off event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM powered off event received")
 		case *types.VmResettingEvent:
-			e.logger.Info("VM resetting event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM resetting event received")
 		case *types.VmRegisteredEvent:
-			e.logger.Info("VM registered event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM registered event received")
 		case *types.VmReconfiguredEvent:
-			e.logger.Info("VM reconfigure event received")
+			vmName := event.GetEvent().Vm.Name
+			vmRef := event.GetEvent().Vm.Vm.Reference()
+			e.logger.WithFields(logrus.Fields{"vm-name": vmName, "vm-ref": vmRef}).Info("VM reconfigure event received")
 		default:
 			e.logger.WithFields(logrus.Fields{"type": reflect.TypeOf(event).String()}).Debug("Event ignored")
 		}
